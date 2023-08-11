@@ -1,0 +1,59 @@
+.user-card {
+    width: 120px;
+    height: 190px;
+    background: rgb(39, 39, 39);
+    border-radius: 12px;
+    box-shadow:6px 6px 12px rgba(0,0,0,1), 1px 1px 10px rgba(255, 255, 255, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition-duration: .5s;
+  }
+  
+  .profileImage {
+    background: linear-gradient(to right,rgb(54, 54, 54),rgb(32, 32, 32));
+    margin-top: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.329);
+  }
+  
+  .textContainer {
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .name {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  
+  .profile {
+    font-size: 0.84em;
+    background: white;
+    letter-spacing: 0.2px;
+    border:none;
+    padding:4px;
+    border-radius:8px;
+    color:#333;
+    cursor:pointer;
+  }
+  .profile:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    transition:1s all;
+  }
+  
+  .user-card:hover {
+    background-color: rgb(43, 43, 43);
+    transition-duration: .5s;
+  }
