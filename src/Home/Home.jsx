@@ -121,15 +121,7 @@ function Home() {
     if (activeConversation) {
 
       let usertodm = activeConversation?.with?._id === user?._id ? activeConversation?.createdBy : activeConversation?.with
-      socket.emit('MESSAGE', {
-        usertodm, message: {
-          createdBy: { _id: user?._id },
-          content,
-          createdAt: Date.now(),
-          conversation: activeConversation?._id
-        }
-      }, async () => {
-        dispatch(changeLastMessage({
+         dispatch(changeLastMessage({
           content,
           conversation: activeConversation?._id
         }));
@@ -146,6 +138,13 @@ function Home() {
           createdAt: Date.now(),
           conversation: activeConversation?._id
         }));
+      socket.emit('MESSAGE', {
+        usertodm, message: {
+          createdBy: { _id: user?._id },
+          content,
+          createdAt: Date.now(),
+          conversation: activeConversation?._id
+        }
       });
 
     } else {
@@ -154,8 +153,8 @@ function Home() {
         createdAt: Date.now(),
         with: userToDM?._id
       }, config).then((res) => {
-        socket.emit('MESSAGE', userToDM, async () => {
-          dispatch(addConversation(res?.data?.data?.conversation));
+        socket.emit('MESSAGE', userToDM)
+                 dispatch(addConversation(res?.data?.data?.conversation));
           dispatch(setActiveConversation(res?.data?.data?.conversation));
           dispatch(addMessage(
             {
@@ -165,7 +164,6 @@ function Home() {
               conversation: res?.data?.data?.conversation?._id
             }
           ));
-        })
       })
     }
 
