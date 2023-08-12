@@ -1,3 +1,3 @@
 const { io } = require("socket.io-client");
 
-export const socket = io("http://localhost:3005");
+export const socket = io("https://iridescent-well-grouse.glitch.me");
