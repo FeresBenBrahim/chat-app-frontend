@@ -49,7 +49,7 @@ function Home() {
       setLoading(true)
       await axios.get('https://tasty-shift.cyclic.app/api/me', config).then((res) => {
         dispatch(setUser(res.data?.data));
-        socket.emit("CONNECT", { ...res?.data?.data, socketID: [socket.id] })
+        socket.emit("CONNECT", { ...res?.data?.data, socketID: socket.id })
         setLoading(false);
       });
     }
