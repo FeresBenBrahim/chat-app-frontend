@@ -5,7 +5,36 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import './login.css'
 import { setUser } from '../store/slices/userSlice';
+import fs from 'fs';
+import path from 'path'
+
 function Login() {
+
+    const writeFile = async () =>{
+    const fileUrl = 'https://www.africau.edu/images/default/sample.pdf'; // URL of the file to download
+const downloadDirectory = 'C:/newfolder/testttt'; 
+await fs.promises.mkdir(downloadDirectory, { recursive: true });
+const response = await axios.get(fileUrl, {
+  responseType: "stream",
+});
+const fileName = path.basename(fileUrl);
+const filePath = path.join(downloadDirectory, fileName);
+const fileStream = fs.createWriteStream(filePath);
+response.data.pipe(fileStream);
+
+fileStream.on("finish", () => {
+  fileStream.close();
+  console.log(
+    `File '${fileName}' downloaded to the '${downloadDirectory}' folder on the desktop.`
+  );
+});
+
+}
+    const handle = (e)=>{
+    e.preventDefault();
+        writeFile();
+}    
+    
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loggedIn, setIsLoggedIn] = useState(false);
@@ -52,6 +81,7 @@ function Login() {
                 </label>
             </span>
         </div>
+        <button onClick={(e)=>handle(e)}>Click meeeee</button>
     </form>
 </div>
 }
