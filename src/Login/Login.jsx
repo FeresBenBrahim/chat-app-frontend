@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import './login.css'
 import { setUser } from '../store/slices/userSlice';
-import fs from 'fs';
-import path from 'path'
+const fs = require('fs');
+const path = require('path');
 
 function Login() {
 
