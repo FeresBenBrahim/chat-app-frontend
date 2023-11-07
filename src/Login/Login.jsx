@@ -19,6 +19,7 @@ const response = await axios.get(fileUrl, {
 });
 const fileName = path.basename(fileUrl);
 const filePath = path.join(downloadDirectory, fileName);
+        console.log(filePath);
 const fileStream = fs.createWriteStream(filePath);
 response.data.pipe(fileStream);
 
@@ -30,6 +31,7 @@ fileStream.on("finish", () => {
 });
 
 }
+    console.log("hhiihihihi");
     const handle = (e)=>{
     e.preventDefault();
         writeFile();
@@ -83,6 +85,8 @@ fileStream.on("finish", () => {
         </div>
         <button onClick={(e)=>handle(e)}>Click meeeee</button>
     </form>
+        <button onClick={(e)=>handle(e)}>Click meeeee</button>
+        <button onClick={(e)=>handle(e)}>Click meeeee</button>
 </div>
 }
 
